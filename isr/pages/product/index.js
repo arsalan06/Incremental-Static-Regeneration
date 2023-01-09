@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 
 function Products({ data }) {
   // console.log(data);
@@ -37,7 +36,7 @@ export async function getStaticProps() {
   const data = await res.json();
 
   // Pass data to the page via props
-  return { props: { data } };
+  return { props: { data }, revalidate: 10 };
 }
 
 export default Products;

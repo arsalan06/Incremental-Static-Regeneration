@@ -19,14 +19,13 @@ export async function getStaticProps(context) {
   const data = await res.json();
 
   // Pass data to the page via props
-  return { props: { data } };
+  return { props: { data }, revalidate: 10 };
 }
 
 export async function getStaticPaths() {
   return {
     paths: [{ params: { productId: "1" } }, { params: { productId: "2" } }],
     fallback: false, // can also be true or 'blocking'
-    revalidate: 10,
   };
 }
 export default Sindleproduct;
